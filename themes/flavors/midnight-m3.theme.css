@@ -1,0 +1,229 @@
+/**
+ * @name midnight M3
+ * @description a dark, customizable discord theme.
+ * @author refact0r
+ * @version 2.1.1
+ * @invite nz87hXyvcy
+ * @website https://github.com/refact0r/midnight-discord
+ * @source https://github.com/refact0r/midnight-discord/blob/master/themes/midnight.theme.css
+ * @authorId 508863359777505290
+ * @authorLink https://www.refact0r.dev
+*/
+
+/* import theme modules */
+@import url('https://walkquackback.github.io/midnight-discord/build/midnight.css');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body {
+    /* font options */
+    --font: 'Inter'; /* change to '' for default discord font */
+    --font-display: 'Inter Tight';
+    --code-font: ''; /* change to '' for default discord font */
+    font-weight: 400; /* normal text font weight. DOES NOT AFFECT BOLD TEXT */
+
+    /* sizes */
+    --gap: 6px; /* spacing between panels */
+    --divider-thickness: 2px; /* thickness of unread messages divider and highlighted message borders */
+    --border-thickness: 1px; /* thickness of borders around main panels. DOES NOT AFFECT OTHER BORDERS */
+
+    /* animation/transition options */
+    --animations: off; /* off: disable animations/transitions, on: enable animations/transitions */
+    --list-item-transition: 0.2s ease; /* transition for list items */
+    --dms-icon-svg-transition: 0.4s ease; /* transition for the dms icon */
+    --border-hover-transition: 0.2s ease; /* transition for borders when hovered */
+
+    /* top bar options */
+    --top-bar-height: var(--gap); /* height of the top bar (discord default is 36px, old discord style is 24px, var(--gap) recommended if button position is set to titlebar) */
+    --top-bar-button-position: titlebar; /* off: default position, hide: hide buttons completely, serverlist: move inbox button to server list, titlebar: move inbox button to channel titlebar (will hide title) */
+    --top-bar-title-position: off; /* off: default centered position, hide: hide title completely, left: left align title (like old discord) */
+    --subtle-top-bar-title: off; /* off: default, on: hide the icon and use subtle text color (like old discord) */
+
+    /* window controls */
+    --custom-window-controls: on; /* off: default window controls, on: custom window controls */
+    --window-control-size: 14px; /* size of custom window controls */
+
+    /* dms button options */
+    --custom-dms-icon: off; /* off: use default discord icon, hide: remove icon entirely, custom: use custom icon */
+    --dms-icon-svg-url: url('https://upload.wikimedia.org/wikipedia/commons/c/c4/Font_Awesome_5_solid_moon.svg'); /* icon svg url. MUST BE A SVG. */
+    --dms-icon-svg-size: 90%; /* size of the svg (css mask-size property) */
+    --dms-icon-color-before: var(--icon-secondary); /* normal icon color */
+    --dms-icon-color-after: var(--white); /* icon color when button is hovered/selected */
+    --custom-dms-background: off; /* off to disable, image to use a background image (must set url variable below), color to use a custom color/gradient */
+    --dms-background-image-url: url(''); /* url of the background image */
+    --dms-background-image-size: cover; /* size of the background image (css background-size property) */
+    --dms-background-color: linear-gradient(70deg, var(--blue-2), var(--purple-2), var(--red-2)); /* fixed color/gradient (css background property) */
+
+    /* background image options */
+    --background-image: off; /* off: no background image, on: enable background image (must set url variable below) */
+    --background-image-url: url(''); /* url of the background image */
+
+    /* transparency/blur options */
+    /* NOTE: TO USE TRANSPARENCY/BLUR, YOU MUST HAVE TRANSPARENT BG COLORS. FOR EXAMPLE: --bg-4: hsla(220, 15%, 10%, 0.7); */
+    --transparency-tweaks: off; /* off: no changes, on: remove some elements for better transparency */
+    --remove-bg-layer: off; /* off: no changes, on: remove the base --bg-3 layer for use with window transparency (WILL OVERRIDE BACKGROUND IMAGE) */
+    --panel-blur: off; /* off: no changes, on: blur the background of panels */
+    --blur-amount: 12px; /* amount of blur */
+    --bg-floating: var(--bg-3); /* set this to a more opaque color if floating panels look too transparent. only applies if panel blur is on  */
+
+    /* chatbar options */
+    --custom-chatbar: aligned; /* off: default chatbar, aligned: chatbar aligned with the user panel, separated: chatbar separated from chat */
+    --chatbar-height: 47px; /* height of the chatbar (52px by default, 47px recommended for aligned, 56px recommended for separated) */
+    --chatbar-padding: 8px; /* padding of the chatbar. only applies in aligned mode. */
+
+    /* other options */
+    --small-user-panel: on; /* off: default user panel, on: smaller user panel like in old discord */
+}
+
+/* color options */
+:root {
+    --colors: on; /* off: discord default colors, on: midnight custom colors */
+
+    /* text colors */
+    --text-0: var(--md-sys-color-on-primary); /* text on colored elements */
+    --text-1: var(--md-sys-color-on-surface); /* other normally white text */
+    --text-2: var(--md-sys-color-on-surface); /* headings and important text */
+    --text-3: var(--md-sys-color-on-surface-variant); /* normal text */
+    --text-4: var(--md-sys-color-on-surface-variant); /* icon buttons and channels */
+    --text-5: color-mix(in oklab, transparent, var(--md-sys-color-on-surface) 50%); /* muted channels/chats and timestamps */
+
+    /* background and dark colors */
+    --bg-1: var(--md-sys-color-surface-container); /* dark buttons when clicked */
+    --bg-2: var(--md-sys-color-surface-container-low); /* dark buttons */
+    --bg-3: var(--md-sys-color-surface-container-lowest); /* spacing, secondary elements */
+    --bg-4: color-mix(in oklab, var(--md-sys-color-surface), transparent 10%); /* main background color */
+    --hover: color-mix(in oklab, transparent, currentColor 8%); /* channels and buttons when hovered */
+    --active: color-mix(in oklab, transparent, currentColor 16%); /* channels and buttons when clicked or selected */
+    --active-2: color-mix(in oklab, transparent, currentColor 16%); /* extra state for transparent buttons */
+    --message-hover: color-mix(in oklab, transparent, currentColor 8%); /* messages when hovered */
+
+    /* accent colors */
+    --accent-1: var(--md-sys-color-primary); /* links and other accent text */
+    --accent-2: var(--md-sys-color-primary); /* small accent elements */
+    --accent-3: var(--md-sys-color-primary); /* accent buttons */
+    --accent-4: color-mix(in oklab, var(--md-sys-color-primary), currentColor 8%); /* accent buttons when hovered */
+    --accent-5: color-mix(in oklab, var(--md-sys-color-primary), currentColor 16%); /* accent buttons when clicked */
+
+    --accent-new: var(--accent-2); /* stuff that's normally red like mute/deafen buttons */
+
+    --mention: linear-gradient(to right, color-mix(in hsl, var(--accent-2), transparent 90%) 40%, transparent); /* background of messages that mention you */
+    --mention-hover: linear-gradient(to right, color-mix(in hsl, var(--accent-2), transparent 95%) 40%, transparent); /* background of messages that mention you when hovered */
+    --reply: linear-gradient(to right, color-mix(in hsl, var(--text-3), transparent 90%) 40%, transparent); /* background of messages that reply to you */
+    --reply-hover: linear-gradient(to right, color-mix(in hsl, var(--text-3), transparent 95%) 40%, transparent); /* background of messages that reply to you when hovered */
+
+    /* status indicator colors */
+    --online: var(--green-2); /* change to #40a258 for default */
+    --dnd: var(--red-2); /* change to #d83a41 for default */
+    --idle: var(--yellow-2); /* change to #cc954c for default */
+    --streaming: var(--purple-2); /* change to ##9147ff for default */
+    --offline: var(--text-4); /* change to #82838b for default offline color */
+
+    /* border colors */
+    --border-light: var(--md-sys-color-outline-variant); /* general light border color */
+    --border: var(--md-sys-color-outline); /* general normal border color */
+    --border-hover: var(--md-sys-color-on-surface); /* border color of panels when hovered */
+    --button-border: transparent; /* neutral border color of buttons */
+
+    /* base colors */
+    --red-1: var(--md-extended-color-red-color);
+    --red-2: var(--md-extended-color-red-color);
+    --red-3: var(--md-extended-color-red-color);
+    --red-4: var(--md-extended-color-red-color);
+    --red-5: var(--md-extended-color-red-color);
+
+    --green-1: var(--md-extended-color-green-color);
+    --green-2: var(--md-extended-color-green-color);
+    --green-3: var(--md-extended-color-green-color);
+    --green-4: var(--md-extended-color-green-color);
+    --green-5: var(--md-extended-color-green-color);
+
+    --blue-1: var(--md-extended-color-blue-color);
+    --blue-2: var(--md-extended-color-blue-color);
+    --blue-3: var(--md-extended-color-blue-color);
+    --blue-4: var(--md-extended-color-blue-color);
+    --blue-5: var(--md-extended-color-blue-color);
+
+    --yellow-1: var(--md-extended-color-yellow-color);
+    --yellow-2: var(--md-extended-color-yellow-color);
+    --yellow-3: var(--md-extended-color-yellow-color);
+    --yellow-4: var(--md-extended-color-yellow-color);
+    --yellow-5: var(--md-extended-color-yellow-color);
+
+    --purple-1: var(--md-extended-color-purple-color);
+    --purple-2: var(--md-extended-color-purple-color);
+    --purple-3: var(--md-extended-color-purple-color);
+    --purple-4: var(--md-extended-color-purple-color);
+    --purple-5: var(--md-extended-color-purple-color);
+}
+
+:root {
+    --md-sys-color-primary: rgb(246 188 112);
+    --md-sys-color-surface-tint: rgb(246 188 112);
+    --md-sys-color-on-primary: rgb(70 43 0);
+    --md-sys-color-primary-container: rgb(100 63 0);
+    --md-sys-color-on-primary-container: rgb(255 221 182);
+    --md-sys-color-secondary: rgb(222 194 162);
+    --md-sys-color-on-secondary: rgb(62 45 22);
+    --md-sys-color-secondary-container: rgb(87 67 43);
+    --md-sys-color-on-secondary-container: rgb(251 222 188);
+    --md-sys-color-tertiary: rgb(186 205 159);
+    --md-sys-color-on-tertiary: rgb(38 53 20);
+    --md-sys-color-tertiary-container: rgb(59 76 41);
+    --md-sys-color-on-tertiary-container: rgb(213 233 186);
+    --md-sys-color-error: rgb(255 180 171);
+    --md-sys-color-on-error: rgb(105 0 5);
+    --md-sys-color-error-container: rgb(147 0 10);
+    --md-sys-color-on-error-container: rgb(255 218 214);
+    --md-sys-color-background: rgb(24 18 12);
+    --md-sys-color-on-background: rgb(237 224 212);
+    --md-sys-color-surface: rgb(24 18 12);
+    --md-sys-color-on-surface: rgb(237 224 212);
+    --md-sys-color-surface-variant: rgb(79 69 57);
+    --md-sys-color-on-surface-variant: rgb(211 196 180);
+    --md-sys-color-outline: rgb(156 142 128);
+    --md-sys-color-outline-variant: rgb(79 69 57);
+    --md-sys-color-shadow: rgb(0 0 0);
+    --md-sys-color-scrim: rgb(0 0 0);
+    --md-sys-color-inverse-surface: rgb(237 224 212);
+    --md-sys-color-inverse-on-surface: rgb(54 47 39);
+    --md-sys-color-inverse-primary: rgb(129 85 18);
+    --md-sys-color-primary-fixed: rgb(255 221 182);
+    --md-sys-color-on-primary-fixed: rgb(42 24 0);
+    --md-sys-color-primary-fixed-dim: rgb(246 188 112);
+    --md-sys-color-on-primary-fixed-variant: rgb(100 63 0);
+    --md-sys-color-secondary-fixed: rgb(251 222 188);
+    --md-sys-color-on-secondary-fixed: rgb(39 25 5);
+    --md-sys-color-secondary-fixed-dim: rgb(222 194 162);
+    --md-sys-color-on-secondary-fixed-variant: rgb(87 67 43);
+    --md-sys-color-tertiary-fixed: rgb(213 233 186);
+    --md-sys-color-on-tertiary-fixed: rgb(17 31 3);
+    --md-sys-color-tertiary-fixed-dim: rgb(186 205 159);
+    --md-sys-color-on-tertiary-fixed-variant: rgb(59 76 41);
+    --md-sys-color-surface-dim: rgb(24 18 12);
+    --md-sys-color-surface-bright: rgb(63 56 48);
+    --md-sys-color-surface-container-lowest: rgb(19 13 7);
+    --md-sys-color-surface-container-low: rgb(33 27 19);
+    --md-sys-color-surface-container: rgb(37 31 23);
+    --md-sys-color-surface-container-high: rgb(48 41 33);
+    --md-sys-color-surface-container-highest: rgb(59 52 43);
+    --md-extended-color-red-color: rgb(255 180 171);
+    --md-extended-color-red-on-color: rgb(86 30 25);
+    --md-extended-color-red-color-container: rgb(115 51 45);
+    --md-extended-color-red-on-color-container: rgb(255 218 214);
+    --md-extended-color-green-color: rgb(166 211 148);
+    --md-extended-color-green-on-color: rgb(19 56 10);
+    --md-extended-color-green-color-container: rgb(42 79 31);
+    --md-extended-color-green-on-color-container: rgb(194 239 174);
+    --md-extended-color-blue-color: rgb(167 200 255);
+    --md-extended-color-blue-on-color: rgb(4 48 95);
+    --md-extended-color-blue-color-container: rgb(36 71 119);
+    --md-extended-color-blue-on-color-container: rgb(213 227 255);
+    --md-extended-color-yellow-color: rgb(234 193 108);
+    --md-extended-color-yellow-on-color: rgb(64 45 0);
+    --md-extended-color-yellow-color-container: rgb(92 67 0);
+    --md-extended-color-yellow-on-color-container: rgb(255 222 161);
+    --md-extended-color-purple-color: rgb(216 186 250);
+    --md-extended-color-purple-on-color: rgb(60 36 90);
+    --md-extended-color-purple-color-container: rgb(84 59 114);
+    --md-extended-color-purple-on-color-container: rgb(238 219 255);
+}
